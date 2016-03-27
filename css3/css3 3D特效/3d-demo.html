@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3d翻转</title>
+	<style type="text/css">
+      .my3dSpace{
+      	-webkit-perspective:800;
+      	-webkit-perspective-origin:50% 50%;
+      	overflow: hidden;
+      }
+      
+      .box{
+      	width:400px;
+      	height: 400px;
+      	position:relative;
+      	-webkit-transform-style:preserve-3d;/*告诉浏览器这是3d视图*/
+      	margin: 0px auto;
+      }
+
+      .page{
+      	width:360px;
+      	height:360px;
+      	padding:20px;
+      	background-color: black;
+      	color:#fff;
+      	position: absolute;
+      	line-height: 360px;
+      	margin: 0px auto;
+      	font-weight: bold;
+      	font-size: 360px;
+      	text-align: center;
+      	-webkit-transform-origin:bottom;
+      	-webkit-transition:-webkit-transform 1s linear;
+      }
+
+      #page2,#page3,#page4,#page5,#page6{
+      	-webkit-transform:rotateX(90deg);
+      }
+
+      .op{
+      	margin:50px auto;
+      	text-align: center;
+      }
+	</style>
+	<script>
+	    var curPage = 1;
+		function next(){
+			if(curPage==6)
+				return;
+			var pageC =  document.getElementById('page'+curPage);
+			pageC.style.webkitTransform = 'rotateX(-90deg)';
+			curPage++;
+			var pageC =  document.getElementById('page'+curPage);
+			pageC.style.webkitTransform = 'rotateX(0deg)';
+
+		}
+		function pre(){
+			if(curPage==1)
+				return;
+			var pageC =  document.getElementById('page'+curPage);
+			pageC.style.webkitTransform = 'rotateX(90deg)';
+			curPage--;
+			var pageC =  document.getElementById('page'+curPage);
+			pageC.style.webkitTransform = 'rotateX(0deg)';
+
+		}
+	</script>
+</head>
+<body>
+	<div class="my3dSpace">
+		<div class="box">
+			<div id="page1" class="page">1</div>
+			<div id="page2" class="page">2</div>
+			<div id="page3" class="page">3</div>
+			<div id="page4" class="page">4</div>
+			<div id="page5" class="page">5</div>
+			<div id="page6" class="page">6</div>
+		</div>
+	</div>
+	<div class="op">
+		<a href="javascript:next();">next</a> &nbsp;
+		<a href="javascript:pre();">pre</a>
+	</div>
+</body>
+</html>

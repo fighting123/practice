@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>css3图片动态提示效果</title>
+	<style type="text/css">
+      body,figure,figcaption,h2,p,img{
+      	margin:0;
+      	padding:0;
+      }
+      figure{
+      	position:relative;
+      	width: 33.33%;
+      	overflow: hidden;
+      	height: 350px;
+      	float:left;
+      }
+      figure img,div,p,h2{/*技巧：先给所有需要动画的元素加上transition*/
+      	opacity:0.8;
+      	transition:all 0.35s;/*把背景图片透明度0.9，给其父元素一个背景色黑色，就可以实现遮罩层效果，也可以直接给背景颜色透明度*/
+      } 
+      .test1:hover img{
+      	opacity: 0.5;
+      	transform:translate(-50px,0);
+      }
+      .test1{
+      	background-color: #2f0000;
+      }
+      figcaption{
+      	position: absolute;
+      	top:0;
+      	left:0;
+      	color:#fff;
+      	height:350px;
+      	font-family: "微软雅黑";
+      	padding:25px;
+      }
+      .test1 figcaption p{
+      	color:#333;
+      	background-color:#fff; 
+      	margin: 10px;
+      }
+      .test1 figcaption p:nth-of-type(1){
+        transform:translate(-150px,0);
+        transition-delay:0.05s;
+      }
+      .test1 figcaption p:nth-of-type(2){
+        transform:translate(-150px,0);
+        transition-delay:0.10s;
+      }
+      .test1 figcaption p:nth-of-type(3){
+        transform:translate(-150px,0);
+        transition-delay:0.15s;
+      }
+      .test1:hover figcaption p{
+        transform:translate(0,0);/*移到test1时改变p,如果移到p上，但是这时p已经不在可视范围内了。所以无法添加:hover属性*/
+      }
+
+      .test2{
+      	background-color: #B49BE8;
+      }
+      .test2 figcaption,.test4 figcaption{
+      	width:100%;
+      	height:100%;
+      	padding:0;
+      }
+      .fly{
+      	border:2px solid #fff;
+      	width:80%;
+      	height:80%;
+      	position:absolute;
+      	top:10%;
+      	left:10%;
+      	transform:translate(-350px,-350px) Rotate(180deg) scale(0.1,0.1);
+      }
+      .test2 figcaption .fly p,h2{
+        opacity: 0;
+      }
+      .test2:hover figcaption p,h2{
+        opacity: 1;
+      }
+      .test2:hover .fly{
+      	transform:translate(0px,0px) Rotate(720deg) scale(1,1);
+      }
+      .test2:hover img{
+      	opacity: 0.5;
+      }
+
+      .test3{
+      	background-color: #2f0000;
+      }
+      .test3 figcaption{
+      	padding:100px;
+      }
+      .test3 figcaption h2,.test3 figcaption p{
+      	transform:skew(90deg,90deg);
+      }
+      .test3:hover img{
+      	opacity: 0.5;
+      }
+      .test3:hover figcaption h2,.test3:hover figcaption p{
+        transform:skew(0deg,0deg)
+      }
+
+      .sca{
+      	border:2px solid #fff;
+      	width:80%;
+      	height:80%;
+      	position:absolute;
+      	top:10%;
+      	left:10%;
+      	transform:scale(1.2,1.2);
+      	opacity: 0;
+      }
+      .test4:hover .sca{
+        transform:scale(1,1);
+        opacity: 1;
+      }
+      .test4 img{
+      	transform:scale(1,1);
+      }
+      .test4:hover img{
+      	transform:scale(1.2,1.2);
+      }
+      .sca h2,.sca p{
+      	margin:10%;
+      	transform:scale(1.2,1.2);
+      	opacity: 0;
+      }
+      .test4:hover h2,.test4:hover p{
+      	margin:10%;
+      	transform:scale(1,1);
+      	opacity: 1;
+      }
+        
+
+      .test5 figcaption{
+      	width:100%;
+      	height:100%;
+      }
+      .jing1{
+      	border-top:1px solid #fff;
+      	border-bottom:1px solid #fff;
+      	width:10%;
+      	height:40%;
+      	position:absolute;
+      	top:30%;
+      	left:45%;
+      	transform:scale(1,1);
+      	opacity: 0;
+      }
+      .test5:hover .jing1{
+      	transform:scale(6,1);
+      	opacity: 1;
+      }
+      .jing2{
+      	border-right:2px solid #fff;
+      	border-left:2px solid #fff;
+      	width:40%;
+      	height:10%;
+      	position:absolute;
+      	top:45%;
+      	left:30%;
+      	transform:scale(1,1);
+      	opacity: 0;
+      }
+      .test5:hover .jing2{
+      	transform:scale(1,5);
+      	opacity: 1;
+      }
+
+      .test6 figcaption{
+      	padding:0;
+      	width:100%;
+      	height:100%;
+      }
+      .test6 .another{
+      	width:100%;
+      	height:350px;
+      	background-color: #fff;
+      	color:red;
+      	opacity: 1;
+      	position: absolute;
+      	top:100%;
+      	left:0;
+      	transform:skew(0,0);
+      }
+      .test6:hover .another{
+      	transform:skew(0,10deg);
+      	transform-origin:100% 0%;
+      }
+
+
+      @media screen and (max-width: 600px){
+      	figure{width:100%;}
+      }
+      @media screen and (min-width: 601px) and (max-width: 1000px){
+      	figure{width: 50%}
+      }
+      @media screen and (min-width:1001px){
+      	figure{width:33.33%;}
+      }
+	</style>
+</head>
+<body>
+	<figure class="test1">
+		<img src="./image/3.jpg"/>
+		<figcaption>
+			<h2>图片标题</h2>
+			<p>图片注解1</p>
+			<p>图片注解2</p>
+			<p>图片注解3</p>
+		</figcaption>
+	</figure>
+
+	<figure class="test2">
+		<img src="./image/5.jpg"/>
+		<figcaption>
+		  <div class="fly">
+			<h2>图片标题</h2>
+			<p>飞来飞去</p>
+		  </div>
+		</figcaption>
+	</figure>
+
+
+   <figure class="test3">
+		<img src="./image/3.jpg"/>
+		<figcaption>
+			<h2>图片标题</h2>
+			<p>图片注解1图片注解1</p>
+			<p>图片注解2图片注解2</p>
+		</figcaption>
+	</figure>
+
+
+  <figure class="test4">
+		<img src="./image/5.jpg"/>
+		<figcaption>
+		  <div class="sca">
+			<h2>图片标题</h2>
+			<p>飞来飞去</p>
+		  </div>
+		</figcaption>
+	</figure>
+
+   <figure class="test5">
+		<img src="./image/3.jpg"/>
+		<figcaption>
+		  <div class="jing1"></div>
+		  <div class="jing2"></div>
+		</figcaption>
+	</figure>
+   
+    <figure class="test6">
+		<img src="./image/5.jpg"/>
+		<figcaption>
+		    <h2>图片标题</h2>
+			<p>飞来飞去</p>
+		  <div class="another">用斜切效果实现</div>
+		</figcaption>
+	</figure>
+</body>
+</html>

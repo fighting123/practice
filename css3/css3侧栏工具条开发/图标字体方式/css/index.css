@@ -1,0 +1,101 @@
+@charset "UTF-8";
+.toolbar {
+  position: fixed;
+  left: 50%;
+  bottom: 5px;
+  margin-left: -26px; }
+
+.toolbar-item {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin-top: 1px; }
+  .toolbar-item:hover .toolbar-icon {
+    top: -52px; }
+  .toolbar-item:hover .toolbar-text {
+    top: 0; }
+  .toolbar-item:hover .toolbar-layer {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    filter: alpha(opacity=100); }
+
+.toolbar-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 52px;
+  height: 52px;
+  overflow: hidden; }
+
+.toolbar-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 52px;
+  height: 52px;
+  background-color: #d0d6d9;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  line-height: 52px; }
+
+.toolbar-text {
+  position: absolute;
+  left: 0;
+  top: 52px;
+  width: 52px;
+  height: 52px;
+  background-color: #98a1a6;
+  color: #fff;
+  font-size: 12px;
+  font-family: '微软雅黑';
+  font-weight: bold;
+  text-align: center;
+  padding-top: 12px;
+  /*两行文字居中*/
+  line-height: 1.2;
+  -webkit-transition: top 1s;
+  -moz-transition: top 1s;
+  -ms-transition: top 1s;
+  -o-transition: top 1s;
+  transition: top 1s; }
+
+.toolbar-layer {
+  position: absolute;
+  width: 172px;
+  bottom: -10px;
+  right: 52px;
+  background-image: url(../img/toolbar_img.png);
+  background-repeat: no-repeat;
+  -webkit-transform: scale(0.01);
+  -moz-transform: scale(0.01);
+  -ms-transform: scale(0.01);
+  -o-transform: scale(0.01);
+  transform: scale(0.01);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform-origin: 95% 95%;
+  -moz-transform-origin: 95% 95%;
+  -ms-transform-origin: 95% 95%;
+  -o-transform-origin: 95% 95%;
+  transform-origin: 95% 95%;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s; }
+
+.toolbar-layer-weixin {
+  height: 212px;
+  background-position: 0 0; }
+
+.toolbar-layer-app {
+  height: 194px;
+  background-position: 0 -222px; }
+
+/*# sourceMappingURL=index.css.map */

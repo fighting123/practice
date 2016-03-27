@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>粽子</title>
+	<link rel="stylesheet" type="text/css" href="./css/index.css">
+</head>
+<body>
+	<div class="main">
+	    <div class="c_zongzi_box" id="c_zongzi_box">
+			<div class="c_zongzi" id="c_zongzi"></div>
+			<div class="c_shengzi_1" id="c_shengzi"></div>
+			<div class="c_zongzirou" id="c_zongzirou"></div>
+			<div class="c_zuoye" id="c_zuoye"></div>
+			<div class="c_youye" id="c_youye"></div>
+			<div class="c_diye" id="c_diye"></div>
+
+			<div class="c_text_1" id="c_text_1"></div>
+			<div class="c_text_2" id="c_text_2"></div>
+		</div>
+
+		<div class="text" id="text">
+			<div class="caption" id='caption'></div>
+			<div class="to">小伙伴们：</div>
+			<div class="msg">节日快乐节日快乐节日快乐节日快乐节日快乐节日快乐节日快乐节日快乐节日快乐节日快乐节日快乐节日快乐节日快乐</div>
+			<div class="from">啦啦啦</div>
+		</div>
+	</div>
+	<script>
+	 /*获取Dom对象*/
+        var g = function(id){
+        	return document.getElementById(id);
+        }
+    /*事件轴对象构造器*/
+	    var timeLine = function(){
+	    	this.order = [];//动画序列
+	    	this.add = function(time,fun,log){
+                this.order.push({
+                	time:time,
+                	fun:fun,
+                	log:log
+                })
+	    	}
+	    	this.start = function(ff){
+	    		for(s in this.order){
+	    			(function(me){
+                        var fun = me.fun;
+                        var time = me.time;
+                        var log = me.log;
+                        time = Math.max(time-(ff||0),0);
+
+                        setTimeout(fun,time);
+                        setTimeout(function(){
+                        	console.log('time',time,'log',log);
+                        },time)
+	    			})(this.order[s])
+	    		}
+	    	}
+	    }
+	    //初始的场景
+		var s1 = new timeLine();
+		//粽子展开的场景
+		var s2 = new timeLine();
+		//粽子旋转的场景
+		var s3 = new timeLine();
+        s1.add(1,function(){
+			g('c_zongzi_box').className = 'c_zongzi_box c_zongzi_box_rock';
+			g('c_shengzi').onclick = function(){
+                s2.start();
+			}
+		})
+
+		//定义粽子展开的动画
+		s2.add(1,function(){
+			g('c_zongzi_box').className = 'c_zongzi_box';
+			g('text').className = 'text text_in rock';
+		},1)
+       s2.add(100,function(){
+			g('c_shengzi').className = 'c_shengzi_2';
+		},2)
+
+       s2.add(500,function(){
+			g('c_shengzi').className = 'c_shengzi_3';
+		},3)
+       s2.add(1000,function(){
+			g('c_shengzi').className = 'c_shengzi_4';
+			g('caption').className = 'caption caption_rock'
+		},4)
+       s2.add(1500,function(){
+			g('c_shengzi').className = 'c_shengzi_0';
+		},5)
+       s2.add(2000,function(){
+       	    g('c_zongzi').className = 'c_zongzi c_zongzi_out';
+       	    g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in';
+       	    g('c_zuoye').className = 'c_zuoye c_zuoye_in';
+       	    g('c_youye').className = 'c_youye c_youye_in';
+ 
+            g('c_text_1').className = 'c_text_1 c_text_1_in';
+            g('c_text_2').className = 'c_text_2 c_text_mirroe_0';
+       })
+       s2.add(3000,function(){
+       	    g('c_zuoye').className = 'c_zuoye c_zuoye_in c_zuoye_out';
+       	    g('c_youye').className = 'c_youye c_youye_in c_youye_out';
+       	    g('c_diye').className = 'c_diye c_diye_in';
+       	    s3.start();
+       })
+    /*粽子肉托盘旋转动画*/
+	    s3.add(1000,function(){
+	    	g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in c_zongzirou_view_1'
+	    })
+	    s3.add(1200,function(){
+	    	g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in c_zongzirou_view_2';
+	    	g('c_text_1').className = 'c_text_1 c_text_1_in c_text_view_2';
+	    	g('c_text_2').className = 'c_text_2 c_text_1_in c_text_mirror_2';
+	    })
+	   s3.add(1400,function(){
+	    	g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in c_zongzirou_view_3';
+	    	g('c_text_1').className = 'c_text_1 c_text_1_in c_text_view_3';
+	    	g('c_text_2').className = 'c_text_2 c_text_1_in c_text_mirror_3';
+	    })
+	     s3.add(1600,function(){
+	    	g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in c_zongzirou_view_4';
+	    	g('c_text_1').className = 'c_text_1 c_text_1_in c_text_view_4';
+	    	g('c_text_2').className = 'c_text_2 c_text_1_in c_text_mirror_4';
+	    })
+	    s3.add(1800,function(){
+	    	g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in c_zongzirou_view_0';
+	    	g('c_text_1').className = 'c_text_1 c_text_1_in c_text_mirror_0';
+	    	g('c_text_2').className = 'c_text_2 c_text_1_in c_text_view_0';
+
+	    })
+
+	    s3.add(3000,function(){
+	    	g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in c_zongzirou_view_4';
+	    	g('c_text_1').className = 'c_text_1 c_text_1_in c_text_view_4';
+	    	g('c_text_2').className = 'c_text_2 c_text_1_in c_text_mirror_4';
+	    })
+	    s3.add(3200,function(){
+	    	g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in c_zongzirou_view_3';
+	    	g('c_text_1').className = 'c_text_1 c_text_1_in c_text_view_3';
+	    	g('c_text_2').className = 'c_text_2 c_text_1_in c_text_mirror_3';
+	    })
+	    s3.add(3400,function(){
+	    	g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in c_zongzirou_view_2';
+	    	g('c_text_1').className = 'c_text_1 c_text_1_in c_text_view_2';
+	    	g('c_text_2').className = 'c_text_2 c_text_1_in c_text_mirror_2';
+	    })
+	    s3.add(3600,function(){
+	    	g('c_zongzirou').className = 'c_zongzirou c_zongzirou_in c_zongzirou_view_1';
+	    	g('c_text_1').className = 'c_text_1 c_text_1_in c_text_view_0';
+	    	g('c_text_2').className = 'c_text_2 c_text_1_in c_text_mirror_0';
+	    })
+
+	    s3.add(3000,function(){
+	    	s3.start();
+	    })
+        s1.start();
+		//图片加载器
+		/*var imgs = ['../img/zzr_2.png','../img/zzr_3.png','../img/zzr_4.png'];
+		var imgs_onload = function(){
+			imgs.pop();
+			if(imgs.length == 0){
+				s1.start();
+			}
+			for(s in imgs){
+				var img = new Image;
+				img.onload = imgs_onload;
+				img.src = img[s];
+			}
+		}*/
+	</script>
+</body>
+</html>

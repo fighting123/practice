@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<mata http-equiv="X-UA-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width" initial-scale="1">
+	<title>实现鼠标悬停显示消息提示框</title>
+  <link rel="stylesheet" href="./css/font-awesome.min.css">
+	<style type="text/css">
+  
+
+
+	/*全局样式*/
+	  body,ul,li{
+	  	margin:0;
+	  	padding:0;
+	  }
+      html{
+      	width:100%;
+      	height:100%;
+      	-webkit-text-size-adjust:none;  /*旋转的时候文字的大小不要发生改变  */
+      	-moz-text-size-adjust:none;
+      	-ms-text-size-adjust:none;
+      	-o-text-size-adjust:none;
+      	text-size-adjust:none;
+      }
+      body{
+      	width:100%;
+      	height:100%;
+      	background-color: #47c9af;
+      	color:#74777b;
+      	font-weight: 300;
+      	font-size: 1.5em;
+      	font-family: "Raleway","Arail","微软雅黑";
+      }
+      ul{
+        list-style: none;
+      }
+      a:link,a:focus,a:visited{
+      	text-decoration: none;
+      	outline: none;
+      }
+      *,*:after,*:before{/*后边所有动态生成的元素的边框和padding填充都不影响盒子大小*/
+      	-webkit-box-sizing:border-box;
+      	-moz-box-sizing:border-box;
+      	-ms-box-sizing:border-box;
+      	-o-box-sizing:border-box;
+      	box-sizing:border-box;
+      }
+      *:after,*:before{
+      	display: block;/*插入的元素都是快元素*/
+      	content:'';
+      }
+      *:after{
+      	clear:both;/*清楚浮动*/
+      }
+
+
+      /*局部样式*/
+      .nav{
+        width:900px;
+        height:300px;
+        margin:200px auto;
+      }
+      .nav li{
+      	display: inline-block;
+      	padding:0 1em;
+      }
+      .toolTip{
+      	display: inline-block;
+      	font-weight: 700;
+        color: rgba(0,0,0,0.3);
+        padding:0.15em 0.25em 0;
+        position: relative;
+        z-index: 999;
+        transition:color 0.3s;
+      }
+      .toolTip:hover{
+        color:rgba(255,255,255,1);
+      }
+      .toolTip-content{
+      	position: absolute;
+      	z-index:9999;
+      	width:80px;
+      	height:80px;
+      	border-radius: 50%;
+      	background-color: #fff;
+      	left: 50%;/*距离a左边一半（a元素的）的距离*/
+        margin-left: -40px;
+        bottom:100%;/*让审判元素紧贴a元素顶部，100%是相对a标签高度来定*/
+        margin-bottom: 20px;
+        text-align: center;
+        padding-top: 25px;/*不用担心他会撑开元素使span元素变大，因为所有元素已经设置了box-sizing;border-box;*/
+        color: #47c9af;
+        opacity: 0;
+        transition:opacity 0.3s,transform 0.3s;
+      }
+      .toolTip-content i{
+        opacity: 0;
+        transition:opacity 0.3s,transform 0.3s;
+      }
+      .toolTip-content::after{
+        display: block;
+        content:'';
+        width:30px;
+        height:25px;
+        background:url(./img/tooltip1.svg) no-repeat center center;
+        position: absolute;
+        top:100%;
+        left:50%;
+        margin:-10px 0 0 -15px;
+      }
+      .toolTip1 .toolTip-content{
+        transform:translate3d(0,10px,0),rotate3d(1,1,1,45deg);
+        -webkit-transform:translate3d(0,10px,0) rotate3d(1,1,1,45deg);
+        transform-origin:50% 100%;
+       -webkit-transform-origin:50% 100%;
+      }
+      .toolTip2 .toolTip-content{
+        transform:translate3d(0,20px,0);
+        -webkit-transform:translate3d(0,20px,0);
+      }
+      .toolTip2 .toolTip-content i{
+        transform:rotate3d(0,15px,0);
+        -webkit-transform:translate3d(0,15px,0);
+      }
+      .toolTip3 .toolTip-content{
+        transform:rotate3d(0,1,0,90deg) translate3d(0,10px,0);
+        -webkit-transform:rotate3d(0,1,0,90deg) translate3d(0,10px,0);
+        translate-origin:50% 100%;
+      }
+      .toolTip3 .toolTip-content i{
+        transform:scale(0,0,1);
+        -webkit-transform:scale(0,0,1);
+        transform:translate3d(0,5px,0);
+        -webkit-transform:translate3d(0,5px,0);
+      }
+      .toolTip4 .toolTip-content{
+        transform:translate3d(0,-20px,0);
+        -webkit-transform:translate3d(0,-20px,0);
+      }
+      .toolTip4 .toolTip-content i{
+        transform:rotate3d(0,20px,0);
+        -webkit-transform:translate3d(0,20px,0);
+      }
+       .toolTip5 .toolTip-content{
+        transform:rotate3d(0,1,0,90deg);
+        -webkit-transform:rotate3d(0,1,0,90deg);
+      }
+      .toolTip5 .toolTip-content i{
+        transform:rotate3d(0,1,0,90deg);
+        -webkit-transform:rotate3d(0,1,0,90deg);
+      }
+      .toolTip:hover .toolTip-content,.toolTip:hover .toolTip-content i{
+         opacity: 1;
+         transform:translate3d(0,0,0) rotate3d(1,1,1,0);
+      }
+      
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li><a href="#" class="toolTip toolTip1">Home<span class="toolTip-content"><i class="fa fa-fw fa-home"></i></span></a></li>
+			<li><a href="#" class="toolTip toolTip2">About me<span class="toolTip-content"><i class="fa fa-fw fa-user"></i></span></a></li>
+			<li><a href="#" class="toolTip toolTip3">Photography<span class="toolTip-content"><i class="fa fa-fw fa-camera-retro"></i></span></a></li>
+			<li><a href="#" class="toolTip toolTip4">Work<span class="toolTip-content"><i class="fa fa-fw fa-briefcase"></i></span></a></li>
+			<li><a href="#" class="toolTip toolTip5">Contact<span class="toolTip-content"><i class="fa fa-fw fa-envelope"></i></span></a></li>
+		</ul>
+	</div>
+</body>
+</html>

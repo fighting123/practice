@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3d翻转</title>
+	<style type="text/css">
+      .my3dSpace{
+      	-webkit-perspective:800;
+      	-webkit-perspective-origin:50% 50%;
+      	overflow: hidden;
+      }
+      
+      .box{
+      	width:200px;
+      	height: 200px;
+      	position:relative;
+      	-webkit-transform-style:preserve-3d;
+      	margin: 100px auto;
+      }
+
+      .page{
+      	width:180px;
+      	height:180px;
+      	padding:20px;
+      	background-color: black;
+      	color:#fff;
+      	position: absolute;
+      	line-height: 180px;
+      	font-weight: bold;
+      	font-size: 160px;
+      	text-align: center;
+      	-webkit-transform-origin:bottom;
+      	-webkit-transition:-webkit-transform 1s linear;
+      }
+
+      #page1{
+        -webkit-transform:rotateX(0deg);
+      }
+      #page2{
+      	-webkit-transform-origin:top;
+      	-webkit-transform:rotateX(-90deg);
+      }
+      #page3{
+      	-webkit-transform:translateZ(-220px)
+      }
+      #page4{
+      	-webkit-transform:rotateX(90deg);
+      	-webkit-transform-origin:bottom;
+      }
+      #page5{
+      	-webkit-transform:rotateY(-90deg);
+      	-webkit-transform-origin:right;
+      }
+      #page6{
+      	-webkit-transform:rotateY(90deg);
+      	-webkit-transform-origin:left;
+      }
+
+      .op{
+      	width:721px;
+      	margin-top: 100px;
+      }
+	</style>
+	<script>
+	function turn(){
+
+	    var range1 = document.getElementById("range1").value;
+        var range2 = document.getElementById("range2").value;
+        var range3 = document.getElementById("range3").value;
+        var box = document.querySelector('.box');
+        /*box.style.webkitTransform = "rotate3d(range1+'deg',range2+'deg',range3+'deg')";*/
+        box.style.webkitTransform = "rotateX("+range1+"deg) rotateY("+range2+"deg) rotateZ("+range3+"deg)";
+	}
+	</script>
+</head>
+<body>
+	<div class="my3dSpace">
+		<div class="box">
+			<div id="page1" class="page">1</div>
+			<div id="page2" class="page">2</div>
+			<div id="page3" class="page">3</div>
+			<div id="page4" class="page">4</div>
+			<div id="page5" class="page">5</div>
+			<div id="page6" class="page">6</div>
+		</div>
+	</div>
+	<div class="op">
+		<input type="range" id="range1" min="-360" max="360" onchange='turn()';/>
+		<input type="range" id="range2" min="-360" max="360" onchange='turn()'/>
+		<input type="range" id="range3" min="-360" max="360" onchange='turn()'/>
+	</div>
+</body>
+</html>

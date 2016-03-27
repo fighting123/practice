@@ -1,0 +1,83 @@
+@import 'mixin';
+$toolbar-size:52px;
+.toolbar{
+	position: fixed;
+	left:50%;
+	bottom:5px;
+	margin-left:-$toolbar-size / 2;
+}
+.toolbar-item{
+    position: relative;
+    display: block;
+    width:$toolbar-size;
+    height:$toolbar-size;
+    margin-top: 1px;
+    &:hover{
+    	.toolbar-icon{
+    		top:-$toolbar-size;
+    	}
+    	.toolbar-text{
+    		top:0;
+    	}
+    	.toolbar-layer{
+    		@include transform(scale(1));
+			@include opacity(1);
+    	}
+    }
+}
+.toolbar-btn{
+    position: absolute;
+    left:0;
+    top:0;
+    width:$toolbar-size;
+    height:$toolbar-size;
+    overflow: hidden;
+}
+.toolbar-icon{
+    position: absolute;
+    left:0;
+    top:0;
+    width:$toolbar-size;
+    height:$toolbar-size;
+    background-color: #d0d6d9;
+    color:#fff;
+    font-size: 30px;
+    text-align: center;
+    line-height: $toolbar-size;
+}
+.toolbar-text{
+    position: absolute;
+    left:0;
+    top:$toolbar-size;
+    width:$toolbar-size;
+    height:$toolbar-size;
+    background-color: #98a1a6;
+    color:#fff;
+    font-size: 12px;
+    font-family: '微软雅黑';
+    font-weight: bold;
+    text-align: center;
+    padding-top: 12px;   /*两行文字居中*/
+    line-height: 1.2;
+    @include transition(top 1s);
+}
+.toolbar-layer{
+    position: absolute;
+    width:172px;
+    bottom:-10px;
+    right:$toolbar-size;
+    background-image: url(../img/toolbar_img.png);
+    background-repeat: no-repeat;
+    @include transform(scale(0.01));
+    @include opacity(0);
+    @include tranform-origin(95% 95%);
+    @include transition(all 1s);
+}
+.toolbar-layer-weixin{
+    height:212px;
+    background-position: 0 0;
+}
+.toolbar-layer-app{
+    height:194px;
+    background-position: 0 -222px;
+}

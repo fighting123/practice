@@ -1,0 +1,545 @@
+@charset "UTF-8";
+@-webkit-keyframes rock {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  10% {
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    transform: rotate(-3deg); }
+  20% {
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -ms-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    transform: rotate(3deg); }
+  30% {
+    -webkit-transform: rotate(-2deg);
+    -moz-transform: rotate(-2deg);
+    -ms-transform: rotate(-2deg);
+    -o-transform: rotate(-2deg);
+    transform: rotate(-2deg); }
+  40% {
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    transform: rotate(2deg); }
+  50% {
+    -webkit-transform: rotate(-1deg);
+    -moz-transform: rotate(-1deg);
+    -ms-transform: rotate(-1deg);
+    -o-transform: rotate(-1deg);
+    transform: rotate(-1deg); }
+  60% {
+    -webkit-transform: rotate(1deg);
+    -moz-transform: rotate(1deg);
+    -ms-transform: rotate(1deg);
+    -o-transform: rotate(1deg);
+    transform: rotate(1deg); }
+  70% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg); } }
+* {
+  margin: 0;
+  padding: 0; }
+
+body {
+  min-width: 1200px;
+  min-height: 600px;
+  background-color: #000;
+  -webkit-font-smoothing: antialiased;
+  font-family: '微软雅黑'; }
+
+.main {
+  width: 1200px;
+  height: 600px;
+  background-image: url(../img/bg.jpg);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -300px;
+  margin-left: -600px;
+  overflow: hidden; }
+
+/*粽子盒子*/
+.c_zongzi_box {
+  position: absolute;
+  left: 700px;
+  top: 184px;
+  width: 312px;
+  height: 305px; }
+
+.c_zongzi_box_rock {
+  -webkit-animation: rock 2s infinite; }
+
+/*粽子*/
+.c_zongzi {
+  width: 312px;
+  height: 305px;
+  background-image: url(../img/zz.png);
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  opacity: 1;
+  filter: alpha(opacity=100); }
+
+.c_zongzi_out {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5); }
+
+/*绳子*/
+.c_shengzi_1 {
+  width: 218px;
+  height: 180px;
+  position: absolute;
+  background-image: url(../img/line_1.png);
+  left: 10px;
+  top: 120px;
+  z-index: 999;
+  cursor: pointer; }
+
+.c_shengzi_2 {
+  width: 219px;
+  height: 159px;
+  position: absolute;
+  background-image: url(../img/line_2.png);
+  left: 10px;
+  top: 158px; }
+
+.c_shengzi_3 {
+  width: 264px;
+  height: 117px;
+  position: absolute;
+  background-image: url(../img/line_3.png);
+  left: 10px;
+  top: 220px; }
+
+.c_shengzi_4 {
+  width: 288px;
+  height: 56px;
+  position: absolute;
+  background-image: url(../img/line_4.png);
+  left: 10px;
+  top: 290px; }
+
+.c_shengzi_0 {
+  display: none; }
+
+/*粽子肉*/
+.c_zongzirou {
+  width: 288px;
+  height: 206px;
+  background-size: 288px 206px;
+  background-image: url(../img/zzr_1.png);
+  position: absolute;
+  left: 50px;
+  top: 48px;
+  z-index: 101;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform-origin: top center;
+  -moz-transform-origin: top center;
+  -ms-transform-origin: top center;
+  -o-transform-origin: top center;
+  transform-origin: top center; }
+
+.c_zongzirou_in {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1); }
+
+/*左叶*/
+.c_zuoye {
+  width: 114px;
+  height: 266px;
+  background-image: url(../img/leaf_left.png);
+  position: absolute;
+  left: 20px;
+  top: -50px;
+  z-index: 1;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform-origin: left bottom;
+  -moz-transform-origin: left bottom;
+  -ms-transform-origin: left bottom;
+  -o-transform-origin: left bottom;
+  transform-origin: left bottom;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s; }
+
+.c_zuoye_in {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: rorate(-5deg);
+  -moz-transform: rorate(-5deg);
+  -ms-transform: rorate(-5deg);
+  -o-transform: rorate(-5deg);
+  transform: rorate(-5deg); }
+
+.c_zuoye_out {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: rorate(-15deg);
+  -moz-transform: rorate(-15deg);
+  -ms-transform: rorate(-15deg);
+  -o-transform: rorate(-15deg);
+  transform: rorate(-15deg); }
+
+/*右叶*/
+.c_youye {
+  width: 318px;
+  height: 338px;
+  background-image: url(../img/leaf_right.png);
+  position: absolute;
+  left: 90px;
+  top: -80px;
+  z-index: 111;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8); }
+
+.c_youye_in {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transform: rorate(5deg) scale(0.8);
+  -moz-transform: rorate(5deg) scale(0.8);
+  -ms-transform: rorate(5deg) scale(0.8);
+  -o-transform: rorate(5deg) scale(0.8);
+  transform: rorate(5deg) scale(0.8); }
+
+.c_youye_out {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transform: rorate(15deg) scale(0.8);
+  -moz-transform: rorate(15deg) scale(0.8);
+  -ms-transform: rorate(15deg) scale(0.8);
+  -o-transform: rorate(15deg) scale(0.8);
+  transform: rorate(15deg) scale(0.8); }
+
+/*底叶*/
+.c_diye {
+  width: 618px;
+  height: 468px;
+  background-image: url(../img/leaf_expand.png);
+  position: absolute;
+  left: -150px;
+  top: -60px;
+  z-index: 99;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s; }
+
+.c_diye_in {
+  opacity: 1;
+  filter: alpha(opacity=100); }
+
+/*字一*/
+.c_text_1 {
+  width: 180px;
+  height: 100px;
+  background-image: url(../img/t_jixiang.png);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -70px;
+  margin-left: -50px;
+  z-index: 200;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s; }
+
+.c_text_1_in {
+  opacity: 1;
+  filter: alpha(opacity=100); }
+
+/*字二*/
+.c_text_2 {
+  width: 180px;
+  height: 100px;
+  background-image: url(../img/t_ruyi.png);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -70px;
+  margin-left: -50px;
+  z-index: 200;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transform-origin: center center;
+  -moz-transform-origin: center center;
+  -ms-transform-origin: center center;
+  -o-transform-origin: center center;
+  transform-origin: center center;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s; }
+
+/*祝福语文字*/
+.text {
+  position: absolute;
+  width: 400px;
+  height: 370px;
+  left: 180px;
+  top: 140px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333; }
+
+.text .caption {
+  width: 400px;
+  height: 240px;
+  background: url(../img/caption.png) no-repeat;
+  margin-left: 40px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 1s 0s;
+  -moz-transition: all 1s 0s;
+  -ms-transition: all 1s 0s;
+  -o-transition: all 1s 0s;
+  transition: all 1s 0s; }
+.text .caption_rock {
+  -webkit-animation: rock 2s infinite; }
+.text .to, .text .msg, .text .from {
+  width: 400px;
+  margin-top: 10px;
+  margin-left: 40px;
+  opacity: 0;
+  filter: alpha(opacity=0); }
+.text .to {
+  -webkit-transition: all 1s 0.5s;
+  -moz-transition: all 1s 0.5s;
+  -ms-transition: all 1s 0.5s;
+  -o-transition: all 1s 0.5s;
+  transition: all 1s 0.5s; }
+.text .msg {
+  -webkit-transition: all 1s 1s;
+  -moz-transition: all 1s 1s;
+  -ms-transition: all 1s 1s;
+  -o-transition: all 1s 1s;
+  transition: all 1s 1s; }
+.text .from {
+  text-align: right;
+  -webkit-transition: all 1s 1.5s;
+  -moz-transition: all 1s 1.5s;
+  -ms-transition: all 1s 1.5s;
+  -o-transition: all 1s 1.5s;
+  transition: all 1s 1.5s; }
+
+.text_in .caption, .text_in .msg, .text_in .from, .text_in .to {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  margin-left: 0px; }
+
+/*粽子肉旋转的视角*/
+.c_zongzirou_view_1 {
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -ms-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
+  background-image: url(../img/zzr_1.png); }
+
+.c_zongzirou_view_2 {
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -ms-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
+  background-image: url(../img/zzr_2.png); }
+
+.c_zongzirou_view_3 {
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -ms-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
+  background-image: url(../img/zzr_3.png); }
+
+.c_zongzirou_view_4 {
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -ms-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
+  background-image: url(../img/zzr_4.png); }
+
+.c_zongzirou_view_0 {
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -ms-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
+  background-image: url(../img/zzr_1.png);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg); }
+
+/*文字的视角*/
+.c_text_view_1 {
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8);
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s; }
+
+.c_text_mirror_1 {
+  display: none;
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s; }
+
+.c_text_view_2 {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: scale(0.8) rotateY(30deg) translate(-50px, 0) rotate(8deg);
+  -moz-transform: scale(0.8) rotateY(30deg) translate(-50px, 0) rotate(8deg);
+  -ms-transform: scale(0.8) rotateY(30deg) translate(-50px, 0) rotate(8deg);
+  -o-transform: scale(0.8) rotateY(30deg) translate(-50px, 0) rotate(8deg);
+  transform: scale(0.8) rotateY(30deg) translate(-50px, 0) rotate(8deg); }
+
+.c_text_mirror_2 {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: scale(0.7) rotateY(70deg) translate(283px, -15px) rotate(-8deg);
+  -moz-transform: scale(0.7) rotateY(70deg) translate(283px, -15px) rotate(-8deg);
+  -ms-transform: scale(0.7) rotateY(70deg) translate(283px, -15px) rotate(-8deg);
+  -o-transform: scale(0.7) rotateY(70deg) translate(283px, -15px) rotate(-8deg);
+  transform: scale(0.7) rotateY(70deg) translate(283px, -15px) rotate(-8deg); }
+
+.c_text_view_3 {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: scale(0.75) rotateY(49deg) translate(-94px, 0) rotate(15deg);
+  -moz-transform: scale(0.75) rotateY(49deg) translate(-94px, 0) rotate(15deg);
+  -ms-transform: scale(0.75) rotateY(49deg) translate(-94px, 0) rotate(15deg);
+  -o-transform: scale(0.75) rotateY(49deg) translate(-94px, 0) rotate(15deg);
+  transform: scale(0.75) rotateY(49deg) translate(-94px, 0) rotate(15deg); }
+
+.c_text_miror_3 {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: scale(0.75) rotateY(49deg) translate(118px, 0px) rotate(-15deg);
+  -moz-transform: scale(0.75) rotateY(49deg) translate(118px, 0px) rotate(-15deg);
+  -ms-transform: scale(0.75) rotateY(49deg) translate(118px, 0px) rotate(-15deg);
+  -o-transform: scale(0.75) rotateY(49deg) translate(118px, 0px) rotate(-15deg);
+  transform: scale(0.75) rotateY(49deg) translate(118px, 0px) rotate(-15deg); }
+
+.c_text_view_4 {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: scale(0.6) rotateY(50deg) translate(-196px, 10px) rotate(24deg);
+  -moz-transform: scale(0.6) rotateY(50deg) translate(-196px, 10px) rotate(24deg);
+  -ms-transform: scale(0.6) rotateY(50deg) translate(-196px, 10px) rotate(24deg);
+  -o-transform: scale(0.6) rotateY(50deg) translate(-196px, 10px) rotate(24deg);
+  transform: scale(0.6) rotateY(50deg) translate(-196px, 10px) rotate(24deg); }
+
+.c_text_mirror_4 {
+  -webkit-transition: all 1s;
+  -moz-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: scale(0.8) rotateY(30deg) translate(58px, 10px) rotate(-5deg);
+  -moz-transform: scale(0.8) rotateY(30deg) translate(58px, 10px) rotate(-5deg);
+  -ms-transform: scale(0.8) rotateY(30deg) translate(58px, 10px) rotate(-5deg);
+  -o-transform: scale(0.8) rotateY(30deg) translate(58px, 10px) rotate(-5deg);
+  transform: scale(0.8) rotateY(30deg) translate(58px, 10px) rotate(-5deg); }
+
+/*# sourceMappingURL=index.css.map */
